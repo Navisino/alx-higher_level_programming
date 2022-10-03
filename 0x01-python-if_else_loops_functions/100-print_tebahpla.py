@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-for i in 'zYxWvUtSrQpOnMlKjIhGfEdCbA':
-    print("{}".format(i), end="")
+for c in range(ord('z'), ord('a') - 1, -1):
+    print("{:c}".format((c - (ord('a') - ord('A'))) if c % 2 else c), end='')
