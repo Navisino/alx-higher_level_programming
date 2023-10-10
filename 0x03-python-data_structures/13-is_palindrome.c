@@ -1,40 +1,33 @@
-#include "lists.h"
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "lists.h"
 
 /**
-  * is_palindrome - A function that checks if a list is a palindrome.
-  * @head: The pointer to the head of the list.
-  * Return: 0 if list not a palindrome, 1 if it is.
-  */
+ * is_palindrome - test if is a palindrome
+ * @head: firts node of list
+ * Return: 1 if is palindrome, 0 for no
+ */
 int is_palindrome(listint_t **head)
 {
-	listint_t *tmp = *head;
-	int nodes = 0, i = 0, *array = NULL;
+	listint_t *buscar;
+	int con1 = 0, con2 = 0;
+	int arr[4096];
 
-	if (*head == NULL || head == NULL || (*head)->next == NULL)
+
+	if (!head)
+		return (0);
+	buscar = *head;
+	if (!*head || (*head)->next == NULL)
 		return (1);
-	while (tmp)
+
+	for (con1 = 0; buscar; buscar = buscar->next, con1++)
+		arr[con1] = buscar->n;
+	for (con1--; con1 > con2; con1--, con2++)
 	{
-		nodes++;
-		tmp = tmp->next;
-	}
-	array = malloc(sizeof(int) * nodes);
-	tmp = *head;
-	while (tmp)
-	{
-		array[i++] = tmp->n;
-		tmp = tmp->next;
-	}
-	for (i = 0; i < nodes / 2; i++)
-	{
-		if (array[i] != array[nodes - 1 - i])
-		{
-			free(array);
+		if (arr[con2] == arr[con1])
+			;
+		else
 			return (0);
-		}
 	}
-	free(array);
 	return (1);
 }
