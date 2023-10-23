@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-
-
-def safe_print_integer(value):
-    """
-    prints a list of anything, but only prints the integers
-    Returns the amount of integers printed
-    """
+def safe_print_list(my_list=[], x=0):
     try:
-        print("{:d}".format(value))
-        return True
-    except:
-        return False
+        for i in range(x):
+            print("{}".format(my_list[i]), end="")
+    except IndexError:
+        return i
+    else:
+        return x
+    finally:
+        print("")
